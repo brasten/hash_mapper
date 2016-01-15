@@ -54,9 +54,9 @@ module HashMapper
     end
   end
 
-  def map(from, to, options={}, &filter)
+  def map(from, to=nil, options={}, &filter)
     self.maps = self.maps.dup
-    self.maps << Map.new(from, to, options)
+    self.maps << Map.new(from, (to || from), options)
     to.filter = filter if block_given? # Useful if just one block given
   end
 
